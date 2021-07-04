@@ -15,6 +15,8 @@ rbenv install 3.0.0
 
 rbenv global 3.0.0
 
+rbenv local 3.0.0
+
 rbenv rehash
 
 gem update --system 
@@ -69,3 +71,5 @@ gem install bundler
 rbenv rehash
 
 gem install rails
+
+bundle install
