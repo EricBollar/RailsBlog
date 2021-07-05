@@ -1,16 +1,16 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <div class="card">
-  <div class="card-body">
+  <div class="card-body" style="background-color:#8C9A9E;">
     <%= form_with model: article do |form| %>
-        <label for="exampleFormControlTextarea1" class="form-label">Title</label>
+        <label for="exampleFormControlTextarea1" class="form-label" style="font-size: 30px;"><strong>Title</strong></label>
 
       <div class="input-group mb-3">
         <%= form.text_field :title, :class => "form-control", :placeholder => "Type a title..." %>
       </div>
 
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Article</label>
+        <label for="exampleFormControlTextarea1" class="form-label" style="font-size: 30px;"><strong>Article</strong></label>
         <%= form.text_area :body, :class => "form-control", :placeholder => "Type an article...", rows:10%>
       </div>
 
