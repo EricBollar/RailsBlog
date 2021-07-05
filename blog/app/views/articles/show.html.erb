@@ -1,18 +1,18 @@
+<br>
 <li><%= link_to "All Articles", root_path %></li>
 
-<h1><%= @article.title %></h1>
+<h1> <%= @article.title %> </h1>
+<button type="button" class="btn btn-outline-success" onclick="window.location.href='<%= edit_article_path(@article) %>';">Edit</button>
+<%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
 
-<p><%= @article.body %></p>
+<div class="card" style="width: 90%; left: 20px;">
+  <div class="card-body">
+    <p><%= @article.body %></p>
+  </div>
+</div>
+<br>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Delete", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
-
-<h2>Add a comment:</h2>
+<h3>Comments</h3>
 <%= render 'comments/form' %>
+<%= render @article.comments.select(&:persisted?) %>
 
-<h2>Comments</h2>
-<%= render @article.comments %>

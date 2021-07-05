@@ -1,17 +1,25 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<div class="card" style="width: 40rem; left: 40px;">
+  <div class="card-body">
+    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+      <div class="input-group mb-3">
+        <%= form.text_field :commenter, :class => "form-control", :placeholder => "Type a username..." %>
+      </div>
+
+      <div class="input-group mb-3">
+        <%= form.text_field :body, :class => "form-control", :placeholder => "Type a comment..."%>
+      </div>
+
+      <p>
+        <%= form.label :status %>
+        <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+      </p>
+
+      <div class="form-actions">
+        <%= form.submit :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
