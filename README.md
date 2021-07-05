@@ -29,47 +29,63 @@ sudo gem install -n /usr/local/bin gemName
 
 gem install rails
 
-# Installing Ruby & Rails on Ubuntu
-cd $HOME
+# Installing Ruby & Rails on Ubuntu AWS instnce
+** SSH into Instance **
 
 sudo apt-get update
 
-sudo apt install curl
+sudo apt-get install curl
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+\curl -L https://get.rvm.io | bash -s stable --ruby
 
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+** If above cmd doesn't work, read message and combine keys with 2 commands below as site is deprecated **
 
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get install gpgv2
 
-sudo apt-get update
+gpg --keyserver keyserver.ubuntu.com --recv-keys KEYONE KEYTWO
 
-sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+source /home/ubuntu/.rvm/scripts/rvm
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+rvm get stable --autolibs=enable
 
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+rvm install ruby
 
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+** Check Ruby and Sqlite3 worked **
 
-exec $SHELL
+ruby -v
 
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+sqlite3 --version
 
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
-exec $SHELL
-
-rbenv install 3.0.0
-
-rbenv global 3.0.0
-
-rbenv local 3.0.0
-
-gem install bundler
-
-rbenv rehash
+sudo apt-get install -y nodejs
 
 gem install rails
 
+** Check Rails worked **
+
+rails -v
+
 bundle install
+
+** Make sure to use db:migrate before starting rails server **
+
+** To test if worked use: **
+
+rails s -b 0.0.0.0
+
+** If Error: Are you trying to open an SSL connection to a non-SSL Puma? **
+
+Clear Cache or Switch Browser
+
+** If Error: webpacker::Manifest::MissingEntryError in Articles#index **
+
+sudo apt install npm
+
+sudo npm install --global yarn
+
+yarn remove @rails/webpacker
+
+rm -rf ./node_modules
+
+yarn add @rails/webpacker@^5.2.1
