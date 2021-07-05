@@ -5,29 +5,31 @@
 </head>
 
 <br>
-<div class="container">
+<body style="background-color:#D4F5F5;">
+  <div class="container">
 
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">Home</li>
-    </ol>
-  </nav>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+      </ol>
+    </nav>
 
-  <h1 class="display-1">Blog with Rails! - Eric Bollar</h1>
+    <h1 class="display-1">Blog with Rails! - Eric Bollar</h1>
 
-  <h1 class="display-6">Home - All Articles</h1>
+    <h1 class="display-6">Home - All Articles</h1>
 
-  <button type="button" class="btn btn-primary" onclick="window.location.href='<%= new_article_path %>';">Create Article</button>
-  There are <strong><%= Article.public_count %></strong> articles currently!
+    <button type="button" class="btn btn-primary" onclick="window.location.href='<%= new_article_path %>';">Create Article</button>
+    There are <strong><%= Article.public_count %></strong> articles currently!
 
-  <ul>
-    <br>
-    <% @articles.each do |article| %>
-      <% unless article.archived? %>
-        <li>
-          <%= link_to article.title, article %>
-        </li>
+    <ul>
+      <br>
+      <% @articles.each do |article| %>
+        <% unless article.archived? %>
+          <li>
+            <%= link_to article.title, article %>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+</body>

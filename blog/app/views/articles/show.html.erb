@@ -5,30 +5,32 @@
 </head>
 
 <br>
-<div class="container">
+<body style="background-color:#D4F5F5;">
+  <div class="container">
 
-  <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="../">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><%= @article.title %></li>
-      </ol>
-  </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><%= @article.title %></li>
+        </ol>
+    </nav>
 
-  <h1 class="display-4"><%= @article.title %>
-  <button type="button" class="btn btn-outline-success" onclick="window.location.href='<%= edit_article_path(@article) %>';">Edit</button>
-  </h1>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Delete This Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+    <h1 class="display-4"><strong><%= @article.title %></strong>
+    <button type="button" class="btn btn-success" onclick="window.location.href='<%= edit_article_path(@article) %>';">Edit</button>
+    </h1>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Delete This Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
 
-  <div class="card" style="width: 90%; left: 20px;">
-    <div class="card-body">
-      <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @article.body %></p>
+    <div class="card" style="width: 98%; left: 1%;">
+      <div class="card-body">
+        <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @article.body %></p>
+      </div>
     </div>
+    <br>
+
+    <h1 class="display-6">Comments</h1>
+    <%= render 'comments/form' %>
+    <%= render @article.comments.select(&:persisted?) %>
+
   </div>
-  <br>
-
-  <h1 class="display-6">Comments</h1>
-  <%= render 'comments/form' %>
-  <%= render @article.comments.select(&:persisted?) %>
-
-</div>
+</body>
 
