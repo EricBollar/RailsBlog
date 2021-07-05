@@ -18,6 +18,10 @@
 
     <h1 class="display-6">Home - All Articles</h1>
 
+    <p class="lead" style="width: 80%;">This is a tech demonstration of Ruby on Rails where users can create/edit/delete articles as well as post comments.
+    To find out more information, here is the link to the project <a href="https://github.com/EricBollar/RailsBlog">Github</a> and <a href="https://www.ericbollar.com">my website</a>. If you want to create an article of your own, the username
+    and password are "dhh" and "secret" respectively. Articles must be at least 10 characters long. Feel free to comment on an article!</p>
+
     <button type="button" class="btn btn-primary" onclick="window.location.href='<%= new_article_path %>';">Create Article</button>
     There are <strong><%= Article.public_count %></strong> articles currently!
 
