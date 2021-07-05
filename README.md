@@ -29,7 +29,7 @@ sudo gem install -n /usr/local/bin gemName
 
 gem install rails
 
-# Installing Ruby & Rails on Ubuntu AWS instnce
+# Installing Ruby & Rails on Ubuntu AWS instance
 ** SSH into Instance **
 
 sudo apt-get update
@@ -89,3 +89,7 @@ yarn remove @rails/webpacker
 rm -rf ./node_modules
 
 yarn add @rails/webpacker@^5.2.1
+
+** To run rails server indefinitely: **
+
+rails s -d -b 0.0.0.0
