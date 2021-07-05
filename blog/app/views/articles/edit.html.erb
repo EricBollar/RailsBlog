@@ -1,3 +1,19 @@
-<h1>Edit Article</h1>
+<head>
+    <title>Rails Blog</title>
+</head>
+  
+<br>
+<div class="container">
 
-<%= render "form", article: @article %>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../">Home</a></li>
+            <li class="breadcrumb-item"><a href="../<%= @article.id %>"><%= @article.title %></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit: <%= @article.title %></li>
+        </ol>
+    </nav>
+
+    <h1 class="display-4">Edit: <%= @article.title %></h1>
+
+    <%= render "form", article: @article %>
+</div>
